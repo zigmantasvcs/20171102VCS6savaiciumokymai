@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title></title>
+		<style>
+			@font-face{
+				font-family: mano;
+				src: url(MerryChristmasStar.ttf);
+			}
+			
+			*{
+				border-width: 1px;
+				border-style: solid;
+			}
+			
+			p, select{
+				font-family: mano, Arial, sans-serif;
+				color: blue;
+				background-color: red;
+				font-size: 15pt;
+				
+			}
+
+			
+			p span{
+				font-family: Verdana;
+				border-width: 0px;
+				color: purple;
+			}
+			
+			#section1{
+				text-transform: uppercase;
+			}
+			
+			a{
+				color: white;
+				text-decoration: none;
+				background-color: black;
+			}
+			
+			a:hover{
+				color: black;
+				background-color: white;
+			}
+			
+			a:active{
+				
+				display:none;
+			}
+			
+			<!-- https://www.w3schools.com/css/css_attribute_selectors.asp-->
+			[class]{
+				text-decoration: underline;
+			}
+			
+			[id^="section"]{
+				letter-spacing: 5px;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<h1 id="section1">Skyrius 1</h1>
+		<h1 id="section2">Skyrius 2</h1>
+		
+		<a href="">Skyrius 1</a>
+		<a href="">Skyrius 2</a>
+		<a href="">Skyrius 3</a>
+		<p>
+			Tekstas <span>tekstas</span> tekstas
+		</p>
+		<p class="specific">
+			Tekstas tekstas tekstas
+		</p>
+		<p class="specific">
+			Tekstas tekstas tekstas
+		</p>
+		
+		<select>
+			<option>test</option>
+		</select>
+		
+		<span>tekstas pabaigoje</span>
+		
+	</body>
+</html>
