@@ -1,0 +1,30 @@
+.parallax{
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax1{
+  background-image: url("../images/1.jpg");
+}
+.parallax2{
+  background-image: url("../images/2.jpg");
+}
+.parallax3{
+  background-image: url("../images/3.jpg");
+}
+.content{
+  position: relative;
+  width: 800px;
+  min-height: 500px;
+  background-color: orange;
+  padding: 10px;
+}
+
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}

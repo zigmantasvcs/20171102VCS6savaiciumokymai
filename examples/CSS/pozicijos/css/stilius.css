@@ -1,0 +1,25 @@
+div{
+  width: 300px;
+  height: 50px;
+}
+.geltona{
+  position: relative;
+  background-color: yellow;
+  left: 100px;
+}
+.zalia{
+  background-color: green;
+}
+.raudona{
+  background-color: red;
+}
+
+[class^="dezute"]{
+  border: 1px dashed black;
+  background-color: purple;
+}
+
+.dezute1{
+  position: absolute;
+  left: 100px;
+}

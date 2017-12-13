@@ -1,0 +1,21 @@
+div{
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  background-color: silver;
+  padding: 10px;
+  margin: 5px;
+}
+@media screen and (min-width: 1000px){
+  body{
+    background-color: purple;
+  }
+  div{
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 999px){
+  body{
+    background-color: red;
+  }
+}
