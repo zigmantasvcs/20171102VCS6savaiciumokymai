@@ -1,0 +1,25 @@
+.day{
+  float: left;
+  width: 10%;
+  height: 100px;
+  margin: 3px;
+}
+
+[id^="day"]{
+  box-shadow: 0px 0px 2px black;
+
+}
+
+.weekend{
+  background-color: orange;
+}
+.clear{
+  clear: both;
+}
+#calendar{
+  margin: auto;
+}
+
+.currentDay{
+  box-shadow: 0px 0px 2px red;
+}

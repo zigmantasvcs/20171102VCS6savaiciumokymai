@@ -5,6 +5,7 @@
     <title></title>
     <link rel="stylesheet" href="css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/calendar.css">
     <style>
       .blogas{
         padding: 5px;
@@ -19,25 +20,7 @@
         height: 200px;
       }
 
-      .day{
-        float: left;
-        width: 100px;
-        height: 100px;
-      }
 
-      [id^="day"]{
-        border: 1px solid black;
-      }
-
-      .weekend{
-        background-color: orange;
-      }
-      .clear{
-        clear: both;
-      }
-      #calendar{
-        margin: auto;
-      }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/materialize.js"></script>
@@ -68,7 +51,7 @@
       </nav>
 
       <div class="row">
-        <form class="" id="form" action="api/calendar/creates.php" method="post">
+        <form class="" id="form" action="api/calendar/create.php" method="post">
           <div class="input-field col s6">
             <input id="event" name="event" type="text" class="validate">
             <label for="event">Įvykis</label>
@@ -86,8 +69,7 @@
       <section class="row">
     		<div class="col s12">
           <div id="calendar">
-            <input type="text" id="from" hidden />
-            <input type="text" id="to" hidden />
+
           </div>
     		</article>
       </section>
@@ -139,26 +121,6 @@
         closeOnSelect: false, // Close upon selecting a date,
         format: 'yyyy-mm-dd',
         firstDay: 1
-      });
-
-      $("#submit").on("click", function(event){
-        event.preventDefault();
-        $.ajax({
-          type: "POST",
-          url: "api/calendar/create.php",
-          data: $("#form").serialize(),
-          dataType: "json",
-          encode: true
-        })
-        .done(function(data){
-          console.log(data);
-          $(".response").text(data.status);
-        })
-        .fail(function(response, ajaxOptions, thrownException){
-          console.log(response.status);
-          console.log(ajaxOptions);
-          console.log(thrownException);
-        });
       });
 
     </script>

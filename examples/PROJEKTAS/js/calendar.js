@@ -1,4 +1,5 @@
 function init(){
+
   $("#calendar").append("<h1>"+getMonthLT()+"</h1>");
 
   var weekCount = getWeekCount();
@@ -23,16 +24,21 @@ function init(){
         arSkaiciuojamDienas = true;
       }
 
-      if(j == 6 || j == 7){
-        dayBox.addClass("weekend");
-      }
-
       if(currentDay == getLastMonthDayDate().getDate()){
         arSkaiciuojamDienas = false;
       }
 
       if(arSkaiciuojamDienas){
         currentDay++;
+
+        if(j == 6 || j == 7){
+          dayBox.addClass("weekend");
+        }
+
+        // pridedame klase enamajai dienai
+        if(currentDay == new Date().getDate()){
+          dayBox.addClass("currentDay");
+        }
 
         var dienosElementas = getDiv();
 
@@ -51,7 +57,50 @@ function init(){
     $(".day").each(function(index){
       $(this).delay(40*index).fadeIn(300);
     })
+  }
+  GetEvents();
+}
 
+function GetEvents(){
+
+  var from = getMonthFirstDayDate(); // pvz. Fri Dec 01 2017 00:00:00 GMT+0200 (FLE Standard Time) bet netinkamu formatu
+  var to = getLastMonthDayDate(); // pvz. Sun Dec 31 2017 00:00:00 GMT+0200 (FLE Standard Time) netinkamu formatu
+
+  var fromString = getCorrectDateString(from); // pasiverčiame į 2017-12-01 formatą (yyyy-mm-dd)
+  var toString = getCorrectDateString(to); // pasiverčiame į 2017-12-31 formatą (yyyy-mm-dd)
+
+  // onjektas kuri postinsime i read.php, ten bus pasiekiama per $_POST["from"] ir $_POST["to"]
+  var interval = { from: fromString, to: toString }
+  $.ajax({
+    type: "POST",
+    url: "/api/calendar/read.php",
+    dataType: "json",
+    data: interval // obejktas kuri postiname i read php
+  }).done(function(data){
+    console.log(data);
+    $.each(data, function(index, item){
+      $("#day"+item.date.slice(-2)).append(item.event);
+    })
+  }).fail(function(response, ajaxOptions, thrownException){ // pridetas atvejis kai kas nors sufailina read.php, 6i dalis loge i6spausdins problma
+    console.log(response.status);
+    console.log(ajaxOptions);
+    console.log(thrownException);
+  });
+}
+
+function getCorrectDateString(date){
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var day = date.getDate();
+  return year+"-"+formatDateNumber(month+1)+"-"+formatDateNumber(day);
+}
+
+function formatDateNumber(number){
+  if(String(number).length == 1){
+    return "0" + number;
+  }
+  if(String(number).length == 2){
+    return number;
   }
 }
 
